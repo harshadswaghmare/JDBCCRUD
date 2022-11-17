@@ -3,8 +3,8 @@ package Repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-
-
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 import Model.Student;
 import Resources.Applicatinproperty;
@@ -28,6 +28,31 @@ public class StudentRepository {
 			e.printStackTrace();
 		}
 		return flag;
+	}
+	
+	public static void display()
+	{
+		try {
+			Connection connection = Applicatinproperty.CreateConn();
+			Statement stmt = connection.createStatement();
+			String sql = "select * from StudentLogin ";
+			ResultSet rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				int LoginID = rs.getInt("LoginID");
+				String password = rs.getString("password");
+				String username = rs.getString("username");
+				String email = rs.getString("email");
+
+				System.out.print("ID: " + LoginID);
+				System.out.print(", password: " + password);
+				System.out.print(", username: " + username);
+				System.out.println(" email : " + email);
+			}
+		
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
 	}
 	
 

@@ -45,6 +45,19 @@ public class Application {
 			System.out.println(student);
 			
 			}
+		
+		
+		if(option == 2)
+		{
+			try {
+			
+			StudentRepository.display();
+		}catch(Exception e)
+			{
+				e.printStackTrace();
+			}
+		}
+			
 		}
 	}
 
